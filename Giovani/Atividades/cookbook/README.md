@@ -1,9 +1,14 @@
 # cookbook
-
 A new Flutter project.
 
 ## Getting Started
 
+# Adicione o pacote SharedPreferences
+flutter pub add shared_preferences
+
+- persistência de login com SharedPreferences.
+- Com isso, o usuário não precisa logar novamente toda vez que abrir o app, e o botão “Sair” limpa a sessão e o redireciona à tela de login.
+- 
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
