@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "14031537143",
+    "project_id": "login-99ddd",
+    "storage_bucket": "login-99ddd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14031537143:android:fd04d3e6684ddc4b0ca4f2",
+        "android_client_info": {
+          "package_name": "com.lizorrane.tela_login"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRgraoVwsIJIapi3bZS-V6tTJSD4S-WA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
