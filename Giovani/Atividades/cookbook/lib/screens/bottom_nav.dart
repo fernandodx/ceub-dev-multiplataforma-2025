@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'add_recipe_screen.dart';
 import '../models/recipe.dart';
 import 'login_screen.dart';
 import 'recipe_detail_screen.dart';
@@ -24,15 +25,43 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🍳 CookBook App'),
-        backgroundColor: Colors.orange,
+        title: const Text(
+          '🍳 CookBook App',
+          style: TextStyle(
+            color: Colors.white,         // texto branco
+            fontWeight: FontWeight.w500, // negrito
+          ),
+        ),
+        backgroundColor: Colors.indigo,
         automaticallyImplyLeading: false,
       ),
       body: _buildBody(),
+      
+      
+
+      // =========== BOTÃO FLUTUANTE CENTRAL (+) ============
+      floatingActionButton: SizedBox(
+        width: 40,
+        height: 40,
+        child: FloatingActionButton(
+          backgroundColor: Colors.indigo,
+          elevation: 5,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const AddRecipeScreen()),
+            );
+          },
+          child: const Icon(Icons.add, size: 25, color: Colors.white),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      
+      // =============== MENU RODAPÉ ==================
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.orange,
+        selectedItemColor: Colors.indigo,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
         items: const [
@@ -72,7 +101,7 @@ class _BottomNavState extends State<BottomNav> {
         _buildCategoryFilter(),
         Expanded(
           child: ListView.builder(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(15),
             itemCount: filtered.length,
             itemBuilder: (context, index) {
               final recipe = filtered[index];
@@ -114,7 +143,7 @@ class _BottomNavState extends State<BottomNav> {
                               Text(
                                 recipe.title,
                                 style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
+                                    fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               const SizedBox(height: 6),
                               Row(
@@ -128,8 +157,15 @@ class _BottomNavState extends State<BottomNav> {
                                   Text('${recipe.serves} pessoas'),
                                 ],
                               ),
-                              const SizedBox(height: 4),
-                              Text('R\$ ${recipe.price.toStringAsFixed(2)}'),
+                              Row(
+                                children: [
+                                  const SizedBox(height: 4),
+                                  Text(' R\$ ${recipe.price.toStringAsFixed(2)}'),
+                                  const SizedBox(width: 13),
+                                  const Icon(Icons.whatshot, size: 16, color: Colors.grey),
+                                  Text(' ${recipe.calories} kcal'),
+                                ],
+                              ),
                             ],
                           ),
                         ),
@@ -137,7 +173,7 @@ class _BottomNavState extends State<BottomNav> {
                       IconButton(
                         icon: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: isFavorite ? Colors.red : Colors.grey,
+                          color: isFavorite ? const Color.fromARGB(255, 236, 22, 7) : Colors.grey,
                         ),
                         onPressed: () {
                           setState(() {
@@ -159,10 +195,10 @@ class _BottomNavState extends State<BottomNav> {
       ],
     );
   }
-
+  // =============== FILTRO SUPERIOR ==================
   Widget _buildCategoryFilter() {
     return SizedBox(
-      height: 90,
+      height: 70,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categories.length,
@@ -177,10 +213,10 @@ class _BottomNavState extends State<BottomNav> {
               });
             },
             child: Container(
-              width: 100,
+              width: 85,
               margin: const EdgeInsets.symmetric(horizontal: 8),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.orange : Colors.white,
+                color: isSelected ? Colors.indigo : Colors.white,
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
@@ -195,14 +231,15 @@ class _BottomNavState extends State<BottomNav> {
                 children: [
                   Icon(
                     _getCategoryIcon(category),
-                    color: isSelected ? Colors.white : Colors.orange,
-                    size: 28,
+                    color: isSelected ? Colors.white : Colors.indigo,
+                    size: 25,
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 5),
                   Text(
                     category,
                     style: TextStyle(
-                      color: isSelected ? Colors.white : Colors.orange,
+                      fontSize: 12,
+                      color: isSelected ? Colors.white : Colors.indigo,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -242,7 +279,7 @@ class _BottomNavState extends State<BottomNav> {
     }
 
     return ListView.builder(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(15),
       itemCount: _favoriteRecipes.length,
       itemBuilder: (context, index) {
         final recipe = _favoriteRecipes[index];
@@ -252,7 +289,7 @@ class _BottomNavState extends State<BottomNav> {
           child: ListTile(
             leading: Image.asset(recipe.imageUrl, width: 80, fit: BoxFit.cover),
             title: Text(recipe.title),
-            subtitle: Text('R\$ ${recipe.price.toStringAsFixed(2)}'),
+            subtitle: Text(' R\$ ${recipe.price.toStringAsFixed(2)}'),
             trailing: IconButton(
               icon: const Icon(Icons.delete, color: Colors.red),
               onPressed: () {
@@ -288,7 +325,7 @@ class _BottomNavState extends State<BottomNav> {
           SizedBox(height: 8),
           Text("Telefone: (61) 99999-9999"),
           SizedBox(height: 4),
-          Text("E-mail: aluno@ceub.edu.br"),
+          Text("E-mail: giovani.melo@sempreceub.com"),
         ],
       ),
     );

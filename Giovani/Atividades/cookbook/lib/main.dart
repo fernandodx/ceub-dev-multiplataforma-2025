@@ -18,8 +18,8 @@ class MyApp extends StatelessWidget {
       title: 'CookBook App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        scaffoldBackgroundColor: Colors.orange.shade50,
+        primarySwatch: Colors.indigo,
+        scaffoldBackgroundColor: Colors.indigo.shade50,
       ),
       home: const SplashScreen(),
     );
@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return const Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: CircularProgressIndicator(color: Colors.orange),
+        child: CircularProgressIndicator(color: Colors.indigo),
       ),
     );
   }

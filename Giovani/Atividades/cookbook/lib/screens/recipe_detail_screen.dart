@@ -18,8 +18,14 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
     final r = widget.recipe;
     return Scaffold(
       appBar: AppBar(
-        title: Text(r.title),
-        backgroundColor: Colors.orange,
+        title: Text(
+          r.title, 
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        backgroundColor: Colors.indigo,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -89,7 +95,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 2),
                           child: Row(
                             children: [
-                              const Icon(Icons.check, size: 18, color: Colors.orange),
+                              const Icon(Icons.check, size: 18, color: Colors.indigo),
                               const SizedBox(width: 6),
                               Text(i),
                             ],
@@ -101,15 +107,15 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
 
             const SizedBox(height: 12),
 
-            // NUTRIENTES
+           // NUTRIENTES
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  NutrientCard(title: "Calorias", value: "250 kcal"),
-                  NutrientCard(title: "Carbs", value: "30 g"),
-                  NutrientCard(title: "Proteínas", value: "15 g"),
+                children: [
+                  NutrientCard(title: "Calorias", value: "${r.calories} kcal"),
+                  NutrientCard(title: "Carbs", value: "${r.carbs} g"),
+                  NutrientCard(title: "Proteínas", value: "${r.protein} g"),
                 ],
               ),
             ),
@@ -124,7 +130,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                   return IconButton(
                     icon: Icon(
                       index < _rating ? Icons.star : Icons.star_border,
-                      color: Colors.orange,
+                      color: Colors.indigo,
                     ),
                     onPressed: () {
                       setState(() {
@@ -143,13 +149,13 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
               child: ElevatedButton.icon(
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Receita salva com sucesso!')),
+                    const SnackBar(content: Text('Avaliação feita com sucesso!')),
                   );
                 },
                 icon: const Icon(Icons.save),
-                label: const Text("Salvar Receita"),
+                label: const Text("Avaliar"),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.orange,
+                  backgroundColor: Colors.indigo,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -179,9 +185,9 @@ class NutrientCard extends StatelessWidget {
       width: 100,
       padding: const EdgeInsets.symmetric(vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.orange.shade50,
+        color: Colors.indigo.shade50,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.orange.shade100),
+        border: Border.all(color: Colors.indigo.shade100),
       ),
       child: Column(
         children: [
