@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/recipe.dart';
-import '../screens/login_screen.dart';
-import '../screens/recipe_detail_screen.dart';
+import 'login_screen.dart';
+import 'recipe_detail_screen.dart';
 
 class BottomNav extends StatefulWidget {
   final List<Recipe> recipes;
@@ -16,7 +16,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   String _selectedCategory = 'Todos';
-  List<Recipe> _favoriteRecipes = [];
+  final List<Recipe> _favoriteRecipes = [];
 
   List<String> categories = ['Todos', 'Bebidas', 'Pratos', 'Sobremesas', 'Lanches'];
 
@@ -24,7 +24,7 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CookBook'),
+        title: const Text('🍳 CookBook App'),
         backgroundColor: Colors.orange,
         automaticallyImplyLeading: false,
       ),

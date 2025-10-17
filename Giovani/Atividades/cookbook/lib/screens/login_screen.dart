@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../models/recipe.dart';
-import '../widgets/bottom_nav.dart';
+import 'bottom_nav.dart';
+import '../data/recipes_data.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,59 +14,19 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  final List<Recipe> _recipes = [
-    Recipe(
-      title: "Lasanha Bolonhesa",
-      imageUrl: "assets/images/lasanha-bolonhesa.jpg",
-      time: 60,
-      serves: 4,
-      price: 30.0,
-      ingredients: ["Massa", "Carne", "Molho", "Queijo"],
-      category: "Pratos",
-    ),
-    Recipe(
-      title: "Milkshake de Chocolate",
-      imageUrl: "assets/images/milkshake.jpeg",
-      time: 10,
-      serves: 1,
-      price: 12.0,
-      ingredients: ["Leite", "Chocolate", "Sorvete"],
-      category: "Bebidas",
-    ),
-    Recipe(
-      title: "Bolo de Cenoura",
-      imageUrl: "assets/images/bolo.jpg",
-      time: 45,
-      serves: 8,
-      price: 25.0,
-      ingredients: ["Cenoura", "Farinha", "Açúcar", "Ovos"],
-      category: "Sobremesas",
-    ),
-    Recipe(
-      title: "Hambúrguer Caseiro",
-      imageUrl: "assets/images/hamburguer.jpg",
-      time: 30,
-      serves: 2,
-      price: 18.0,
-      ingredients: ["Pão", "Carne", "Queijo", "Molho"],
-      category: "Lanches",
-    ),
-  ];
-
   Future<void> _login(BuildContext context) async {
-    if (_emailController.text == "aluno@ceub.edu.br" &&
-        _passwordController.text == "12345678") {
+    if (_emailController.text == "aluno" &&
+        _passwordController.text == "123") {
       final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('isLogged', true); // 🔸 salva login
+      await prefs.setBool('isLogged', true);
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Login realizado com sucesso!')),
       );
+
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-          builder: (_) => BottomNav(recipes: _recipes),
-        ),
+        MaterialPageRoute(builder: (_) => BottomNav(recipes: recipesData)),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -83,6 +43,17 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              // TÍTULO DO APLICATIVO
+              Text(
+                '🍳 CookBook',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.orange.shade700,
+                  letterSpacing: 1.2,
+                ),
+              ),
+              // LOGO DO APLICATIVO
               Image.asset('assets/images/logo.png', height: 180),
               const SizedBox(height: 20),
               Container(
@@ -99,6 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ],
                 ),
+                //LOGIN E SENHA
                 child: Column(
                   children: [
                     TextField(
