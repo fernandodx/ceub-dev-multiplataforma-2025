@@ -152,15 +152,23 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen> {
                     const SnackBar(content: Text('Avaliação feita com sucesso!')),
                   );
                 },
-                icon: const Icon(Icons.save),
-                label: const Text("Avaliar"),
+                icon: const Icon(Icons.save, color: Colors.white),
+                label: const Text(
+                  "Avaliar",
+                  style: TextStyle(
+                    color: Colors.white
+                  ),
+                ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.indigo,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  textStyle: const TextStyle(fontSize: 16),
+                  textStyle: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ),
