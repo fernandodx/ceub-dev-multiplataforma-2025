@@ -20,7 +20,7 @@ O **CookBook App** permite visualizar, favoritar e explorar receitas categorizad
 
 | Tela de Login | Tela Principal | Tela de Perfil |
 |:--------------:|:---------------:|:---------------:|
-| <img src="screenshots/login.png" width="250"/> | <img src="screenshots/home.png" width="250"/> | <img src="screenshots/profile.png" width="250"/> |
+| <img src="screenshots/login.png" width="250"/> | <img src="screenshots/home.png" width="250"/> | <img src="screenshots/details.png" width="250"/> | <img src="screenshots/profile.png" width="250"/> |
 
 | Favoritos | Adicionar Receita |
 |:----------:|:-----------------:|
