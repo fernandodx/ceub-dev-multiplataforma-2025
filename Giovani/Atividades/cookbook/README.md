@@ -18,16 +18,14 @@ O **CookBook App** permite visualizar, favoritar e explorar receitas categorizad
 
 ## 🖼️ **Screenshots**
 
-| Tela de Login | Tela Principal | Tela de Perfil |
+| Tela de Login | Tela Principal | Tela de Detalhamento |
 |:--------------:|:---------------:|:---------------:|
-| <img src="screenshots/login.png" width="250"/> | <img src="screenshots/home.png" width="250"/> | <img src="screenshots/details.png" width="250"/> | <img src="screenshots/profile.png" width="250"/> |
+| <img src="screenshots/login.png" width="250"/> | <img src="screenshots/home.png" width="250"/> | <img src="screenshots/details.png" width="250"/> 
+| <img src="screenshots/profile.png" width="250"/> |
 
-| Favoritos | Adicionar Receita |
+| Tela de Perfil | Favoritos | Adicionar Receita |
 |:----------:|:-----------------:|
-| <img src="screenshots/favorites.png" width="250"/> | <img src="screenshots/add_recipe.png" width="250"/> |
-
-> 📸 As imagens devem ser salvas na pasta `/screenshots` do repositório.  
-> Exemplo: `project_root/screenshots/home.png`
+| <img src="screenshots/profile.png" width="250"/> | <img src="screenshots/favorites.png" width="250"/> | <img src="screenshots/add_recipe.png" width="250"/> |
 
 ---
 
@@ -43,7 +41,6 @@ O **CookBook App** permite visualizar, favoritar e explorar receitas categorizad
 ## ⚙️ **Como Executar**
 
 1. Clone o repositório:
-   ```bash
    git clone https://github.com/seu-usuario/cookbook_app.git
    
 2. Instale o pacote SharedPreferences
