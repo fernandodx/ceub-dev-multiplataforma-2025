@@ -38,8 +38,7 @@ class _LoginPageState extends State<LoginPage> {
       String email = emailController.text.trim();
       String password = passwordController.text.trim();
 
-
-      if (email == 'lizorrane.mm@sempreceub.com' && password == '12345678') {
+      if (email == 'aluno@ceub.edu.br' && password == '12345678') {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const WelcomePage()),
@@ -100,8 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                       return 'Por favor, digite seu e-mail';
                     }
                     // Validação de formato de e-mail
-                    final emailRegex =
-                    RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+                    final emailRegex = RegExp(
+                      r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$',
+                    );
                     if (!emailRegex.hasMatch(value)) {
                       return 'Digite um e-mail válido';
                     }
@@ -192,10 +192,7 @@ class WelcomePage extends StatelessWidget {
             const SizedBox(height: 30),
             const Text(
               'Login realizado com sucesso.',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
             ),
             const SizedBox(height: 60),
             SizedBox(
