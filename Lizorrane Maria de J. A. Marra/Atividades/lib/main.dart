@@ -182,7 +182,7 @@ class WelcomePage extends StatelessWidget {
           children: [
             const SizedBox(height: 40),
             const Text(
-              'Bem-vinda, Liz!',
+              'Seja Bem-Vindo(a)!',
               style: TextStyle(
                 fontSize: 26,
                 fontWeight: FontWeight.bold,
