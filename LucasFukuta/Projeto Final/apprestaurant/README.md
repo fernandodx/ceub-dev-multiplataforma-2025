@@ -26,7 +26,7 @@ Um protótipo de aplicativo em Flutter para descoberta de restaurantes e comidas
 
 * **Consumo de API Otimizado**: O app busca os dados de uma API (Beeceptor) usando o pacote `http`. A chamada é feita **apenas uma vez** no `initState` da tela principal, evitando requisições desnecessárias a cada redesenho da tela.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **Flutter (SDK)**: Framework principal para o desenvolvimento da interface.
 * **Dart**: Linguagem de programação.
