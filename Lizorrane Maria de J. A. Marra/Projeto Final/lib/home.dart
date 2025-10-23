@@ -1,6 +1,8 @@
 import 'package:apprestaurant/screens/explore_page.dart';
 import 'package:flutter/material.dart';
 
+import 'main.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -32,9 +34,26 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: const Text("Yummy"),
         elevation: 4,
         backgroundColor: Theme.of(context).colorScheme.surface,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Theme.of(context).brightness == Brightness.dark
+                  ? Icons.wb_sunny_outlined
+                  : Icons.dark_mode_outlined,
+              color: Theme.of(context).colorScheme.onSurface,
+            ),
+            tooltip: Theme.of(context).brightness == Brightness.dark
+                ? 'Modo claro'
+                : 'Modo escuro',
+            onPressed: () => AppRestaurantState.of(context)?.toggleTheme(),
+          ),
+        ],
       ),
       body: IndexedStack(
         index: tab,

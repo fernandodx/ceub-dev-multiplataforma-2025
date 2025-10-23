@@ -10,18 +10,29 @@ class AppRestaurant extends StatefulWidget {
   const AppRestaurant({super.key});
 
   @override
-  State<AppRestaurant> createState() => _AppRestaurantState();
+  State<AppRestaurant> createState() => AppRestaurantState();
 }
 
-class _AppRestaurantState extends State<AppRestaurant> {
+class AppRestaurantState extends State<AppRestaurant> {
   ThemeMode themeMode = ThemeMode.light;
   ColorSelection colorSelected = ColorSelection.pink;
+
+  static AppRestaurantState? of(BuildContext context) =>
+      context.findAncestorStateOfType<AppRestaurantState>();
+
+  void toggleTheme() {
+    setState(() {
+      themeMode = themeMode == ThemeMode.light
+          ? ThemeMode.dark
+          : ThemeMode.light;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Yummy",
-      debugShowCheckedModeBanner: false, //tirar a flag da tela debug
+      debugShowCheckedModeBanner: false,
       themeMode: themeMode,
       theme: ThemeData(
         colorSchemeSeed: colorSelected.color,

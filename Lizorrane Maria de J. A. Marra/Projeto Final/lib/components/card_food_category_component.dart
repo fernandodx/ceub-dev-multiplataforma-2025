@@ -1,17 +1,17 @@
 import 'package:apprestaurant/models/models.dart';
 import 'package:flutter/material.dart';
 
-class CardRestaurantComponent extends StatefulWidget {
-  final Restaurant restaurant;
+class CardFoodCategoryComponent extends StatefulWidget {
+  final FoodCategory foodCategory;
 
-  const CardRestaurantComponent({required this.restaurant, super.key});
+  const CardFoodCategoryComponent({required this.foodCategory, super.key});
 
   @override
-  State<CardRestaurantComponent> createState() =>
-      _CardRestaurantComponentState();
+  State<CardFoodCategoryComponent> createState() =>
+      _CardFoodCategoryComponentState();
 }
 
-class _CardRestaurantComponentState extends State<CardRestaurantComponent> {
+class _CardFoodCategoryComponentState extends State<CardFoodCategoryComponent> {
   bool isLiked = false;
 
   @override
@@ -34,9 +34,9 @@ class _CardRestaurantComponentState extends State<CardRestaurantComponent> {
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    //Imagem principal do restaurante
+                    //Imagem da categoria
                     Image.network(
-                      widget.restaurant.imageUrl,
+                      widget.foodCategory.imageUrl,
                       fit: BoxFit.cover,
                     ),
 
@@ -66,19 +66,13 @@ class _CardRestaurantComponentState extends State<CardRestaurantComponent> {
               ),
             ),
 
-            //Nome e atributos do restaurante
+            //Nome da categoria
             ListTile(
               title: Text(
-                widget.restaurant.name,
+                widget.foodCategory.name,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              subtitle: Text(
-                widget.restaurant.attributes,
-                style: Theme.of(context).textTheme.bodySmall,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-              onTap: () => debugPrint("Detalhar restaurante"),
+              onTap: () => debugPrint("Detalhar categoria"),
             ),
           ],
         ),

@@ -12,14 +12,14 @@ class ExploreData {
 }
 
 class MockService {
-  final String _baseUrl = "https://app-restaurant.wiremockapi.cloud";
+  final String _baseUrl = "https://mpf1be07de1c4524acd6.free.beeceptor.com";
 
   Future<ExploreData> getExploreData() async {
     List<Restaurant> restaurants = await _getRestaurants();
     //TODO Criar método getCategories para consultar do endpoint
-    List<FoodCategory> categories = []; // /categories
+    List<FoodCategory> categories = await _getCategories(); // /categories
     //TODO Criar método getPost para consultar do endpoint
-    List<Post> posts = []; // /posts
+    List<Post> posts = await _getPosts();
     return ExploreData(restaurants, categories, posts);
   }
 
@@ -29,7 +29,27 @@ class MockService {
       final List<dynamic> jsonList = jsonDecode(response.body);
       return jsonList.map((json) => Restaurant.fromJson(json)).toList();
     } else {
-      throw Exception("Falha ai carregar os restaurantes");
+      throw Exception("Falha ao carregar os restaurantes");
+    }
+  }
+
+  Future<List<FoodCategory>> _getCategories() async {
+    final response = await http.get(Uri.parse('$_baseUrl/categories'));
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonList = jsonDecode(response.body);
+      return jsonList.map((json) => FoodCategory.fromJson(json)).toList();
+    } else {
+      throw Exception("Falha ao carregar as categorias");
+    }
+  }
+
+  Future<List<Post>> _getPosts() async {
+    final response = await http.get(Uri.parse('$_baseUrl/posts'));
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonList = jsonDecode(response.body);
+      return jsonList.map((json) => Post.fromJson(json)).toList();
+    } else {
+      throw Exception("Falha ao carregar os posts");
     }
   }
 }
