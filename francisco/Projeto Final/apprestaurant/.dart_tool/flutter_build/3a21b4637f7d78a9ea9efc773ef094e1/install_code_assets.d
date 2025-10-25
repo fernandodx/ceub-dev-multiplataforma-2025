@@ -1,0 +1,1 @@
+ C:\\Users\\francisco.bsousa\\ceub-dev-multiplataforma-2025\\Francisco\\Projeto\ Final\\apprestaurant\\.dart_tool\\flutter_build\\3a21b4637f7d78a9ea9efc773ef094e1\\native_assets.json: 
