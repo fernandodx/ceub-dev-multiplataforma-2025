@@ -20,8 +20,7 @@
 ## Demonstração
 
 Abaixo está o GIF mostrando o funcionamento do aplicativo:
-![ProjetoFinal.gif](docs%2FProjetoFinal.gif)
-
+![gif](docs/demo.gif)
 ## Tecnologias utilizadas
 - **Flutter**
 - **Dart**
