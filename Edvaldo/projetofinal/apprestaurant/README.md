@@ -1,10 +1,10 @@
-# ceub-dev-multiplataforma-2025: Itadakimasu App
+# ceub-dev-multiplataforma-2025: Restaurant App
 
 Um protótipo de app de descoberta de restaurantes em Flutter, demonstrando conceitos de UI/UX, consumo de API e gerenciamento de estado.
 
 ## Demonstração
 
-![Demo do App](demoApp.gif)
+![Demo do App](gif.gif)
 
 ## Features
 
