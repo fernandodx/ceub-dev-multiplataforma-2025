@@ -1,0 +1,58 @@
+import 'dart:convert';
+
+import 'package:apprestaurant/models/models.dart';
+import 'package:http/http.dart' as http;
+
+class ExploreData {
+  final List<Restaurant> restaurants;
+  final List<FoodCategory> categories;
+  final List<Post> friendPosts;
+
+  ExploreData(this.restaurants, this.categories, this.friendPosts);
+}
+
+class MockService {
+  final String _baseUrl = "https://app-restaurant.wiremockapi.cloud";
+
+  Future<ExploreData> getExplorerData() async {
+    List<Restaurant> restaurants = await _getRestaurants();
+    List<FoodCategory> categories = await _getCategories();
+    List<Post> posts = await _getPosts();
+
+    return ExploreData(restaurants, categories, posts);
+  }
+
+  Future<List<Restaurant>> _getRestaurants() async {
+    final response = await http.get(Uri.parse('$_baseUrl/restaurants'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonList = jsonDecode(response.body);
+      return jsonList.map((item) => Restaurant.fromJson(item),).toList();
+    } else {
+      throw Exception("Falha ao carregar os restaurantes!");
+    }
+  }
+
+    Future<List<FoodCategory>> _getCategories() async {
+      final response = await http.get(Uri.parse('$_baseUrl/categories'));
+
+      if(response.statusCode == 200) {
+        final List<dynamic> jsonList = jsonDecode(response.body);
+        return jsonList.map((item) => FoodCategory.fromJson(item),).toList();
+      } else {
+        throw Exception("Falha ao carregar as categorias!");
+      }
+  }
+
+  Future<List<Post>> _getPosts() async {
+    final response = await http.get(Uri.parse('$_baseUrl/posts'));
+
+    if (response.statusCode == 200) {
+      final List<dynamic> jsonList = jsonDecode(response.body);
+      return jsonList.map((item) => Post.fromJson(item),).toList();
+    } else {
+      throw Exception("Falha ao carregar os posts!");
+    }
+  }
+
+}
