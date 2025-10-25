@@ -1,53 +1,84 @@
 import 'package:apprestaurant/models/models.dart';
 import 'package:flutter/material.dart';
 
-class CardRestaurantComponent extends StatelessWidget {
+class CardRestaurantComponent extends StatefulWidget {
   final Restaurant restaurant;
 
-  CardRestaurantComponent({required this.restaurant});
+  const CardRestaurantComponent({required this.restaurant, super.key});
+
+  @override
+  State<CardRestaurantComponent> createState() =>
+      _CardRestaurantComponentState();
+}
+
+class _CardRestaurantComponentState extends State<CardRestaurantComponent> {
+  bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 300,
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+        elevation: 2,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+              borderRadius:
+              const BorderRadius.vertical(top: Radius.circular(16)),
               child: AspectRatio(
                 aspectRatio: 2,
                 child: Stack(
+                  fit: StackFit.expand,
                   children: [
-                    Image.network(restaurant.imageUrl, fit: BoxFit.cover),
+                    //Imagem principal do restaurante
+                    Image.network(
+                      widget.restaurant.imageUrl,
+                      fit: BoxFit.cover,
+                    ),
+
+                    //Botão de curtir
                     Positioned(
-                      top: 4,
+                      top: 6,
                       right: 8,
                       child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.favorite_border_outlined),
-                        iconSize: 30,
-                        color: Colors.red,
+                        icon: Icon(
+                          isLiked
+                              ? Icons.favorite
+                              : Icons.favorite_border_outlined,
+                          color: isLiked
+                              ? Colors.red
+                              : Theme.of(context).colorScheme.onSurface,
+                          size: 28,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            isLiked = !isLiked;
+                          });
+                        },
                       ),
                     ),
                   ],
-                  fit: StackFit.expand,
                 ),
               ),
             ),
+
+            //Nome e atributos do restaurante
             ListTile(
               title: Text(
-                restaurant.name,
-                style: Theme.of(context).textTheme.titleSmall,
+                widget.restaurant.name,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               subtitle: Text(
-                restaurant.attributes,
+                widget.restaurant.attributes,
                 style: Theme.of(context).textTheme.bodySmall,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
-              onTap: () => print("Detalhar restaurante"),
+              onTap: () => debugPrint("Detalhar restaurante"),
             ),
           ],
         ),
